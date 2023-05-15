@@ -5,7 +5,6 @@ import LinkNav from "../LinkNav/LinkNav";
 
 const StyleSign = styled.div`
   display: flex;
-  flex: 0.8;
   align-items: center;
   justify-content: end;
   height: 75px;
@@ -15,7 +14,7 @@ const StyleSign = styled.div`
 const Sign = () => {
   return (
     <StyleSign>
-      <LinkNav text="Sign in"></LinkNav>
+      <LinkNav href="/" text="Sign in"></LinkNav>
       <Button
         backgroundColor="#FF4820"
         color="#fff"

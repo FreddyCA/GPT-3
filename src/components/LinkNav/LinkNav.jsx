@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const LinkNavStyle = styled.a`
   background-color: transparent;
@@ -10,22 +10,26 @@ const LinkNavStyle = styled.a`
   align-items: center;
 
   &:hover {
-    background-color: ${(props) => props.color};
     border-bottom: 1px solid white;
-    color: ${(props) => props.backgroundColor};
+  }
+  @media screen and (max-width: 992px) {
+    border-bottom: 1px solid white;
+    width: 100%;
+    height: 55px;
+    justify-content: center;
+    &:hover {
+      background-color: #0489;
+    }
   }
 `;
 
-
-const LinkNav = ({ text = 'Default Text', href = '#' }) => {
-  return (
-    <LinkNavStyle href={href}>{text}</LinkNavStyle>
-  );
+const LinkNav = ({ text = "Default Text", href = "/" }) => {
+  return <LinkNavStyle href={href}>{text}</LinkNavStyle>;
 };
 
 LinkNav.propTypes = {
   text: PropTypes.string.isRequired,
-  href: PropTypes.string.isRequired
+  href: PropTypes.string.isRequired,
 };
 
 export default LinkNav;

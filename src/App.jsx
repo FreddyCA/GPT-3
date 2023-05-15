@@ -10,6 +10,7 @@ import {
   WhatGPT3,
 } from "./containers";
 import GlobalStyle from "./style/reset";
+import { useEffect, useState } from "react";
 
 const DivGeneral = styled.div`
   background-color: whitesmoke;
@@ -43,12 +44,25 @@ const DivGeneral = styled.div`
   );
 `;
 function App() {
+
+  const [width, setWidth] = useState(window.innerWidth)
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth)
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, []);
+
   return (
     <>
       <GlobalStyle></GlobalStyle>
       <DivGeneral>
         <div>
-          <Navbar></Navbar>
+          <Navbar width={width}></Navbar>
           <Header></Header>
         </div>
         <Brand />

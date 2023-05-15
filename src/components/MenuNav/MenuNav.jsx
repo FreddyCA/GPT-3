@@ -6,6 +6,18 @@ const MenuNavStyle = styled.div`
   margin: 0 66px;
   display: flex;
   gap: 50px;
+
+  @media screen and (max-width: 992px) {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 200px;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin: 0;
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.65);
+  }
 `;
 
 const linksMenu = [
