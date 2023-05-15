@@ -5,7 +5,10 @@ const LogoStyle = styled.img`
   width: 62px;
   height: 16px;
   @media screen and (max-width: 992px) {
-    margin-left: 45%;
+    margin-left: 40%;
+  }
+  @media screen and (max-width: 576px) {
+    margin: 0 auto;
   }
 `;
 

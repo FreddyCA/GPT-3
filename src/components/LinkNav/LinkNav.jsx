@@ -14,22 +14,33 @@ const LinkNavStyle = styled.a`
   }
   @media screen and (max-width: 992px) {
     border-bottom: 1px solid white;
+    background-color: #01244a;
     width: 100%;
-    height: 55px;
+    height: 75px;
     justify-content: center;
     &:hover {
       background-color: #0489;
     }
   }
+
+  @media screen and (max-width: 576px) {
+    height: 50px;
+  }
 `;
 
-const LinkNav = ({ text = "Default Text", href = "/" }) => {
-  return <LinkNavStyle href={href}>{text}</LinkNavStyle>;
+const LinkNav = ({ text = "Default Text", href = "/",showMenu, showMenuFunc }) => {
+  return (
+    <LinkNavStyle href={href} onClick={() => showMenuFunc(!showMenu)}>
+      {text}
+    </LinkNavStyle>
+  );
 };
 
 LinkNav.propTypes = {
   text: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
+  showMenu: PropTypes.bool.isRequired,
+  showMenuFunc: PropTypes.func.isRequired,
 };
 
 export default LinkNav;

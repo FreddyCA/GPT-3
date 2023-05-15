@@ -1,15 +1,15 @@
-// import { RiMenuLine,RiMenuUnfoldFill } from "react-icons/ri";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import Logo from "../Logo/Logo";
-import Sign from "../Sign/Sign";
+import Auth from "../Auth/Auth";
 import MenuNav from "../MenuNav/MenuNav";
 import { useEffect, useState } from "react";
+import MobileNav from "../MobileNav/MobileNav";
 
 const NavbarStyle = styled.div`
   display: flex;
-  height: 100px;
+  height: 80px;
   justify-content: space-between;
   align-items: center;
   max-width: 1024px;
@@ -23,8 +23,10 @@ const NavbarStyle = styled.div`
 
 const Navbar = ({ width }) => {
   const [widthState, setWidthState] = useState(null);
+  const [menuMobile, setMenuMobile] = useState(false);
+
   useEffect(() => {
-    if (width > 1024) {
+    if (width > 576) {
       setWidthState(true);
       console.log("big");
     } else {
@@ -34,10 +36,15 @@ const Navbar = ({ width }) => {
   }, [width]);
 
   return (
-    <NavbarStyle widthState={widthState}>
+    <NavbarStyle>
       <Logo />
-      <MenuNav></MenuNav>
-      <Sign />
+      <MobileNav showMenu={menuMobile} showMenuFunc={setMenuMobile}></MobileNav>
+      <MenuNav
+        showMenu={menuMobile}
+        showMenuFunc={setMenuMobile}
+        widthState={widthState}
+      ></MenuNav>
+      {widthState ? <Auth /> : <></>}
     </NavbarStyle>
   );
 };

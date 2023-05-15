@@ -1,20 +1,32 @@
 import styled from "styled-components";
 
 import Button from "../Button/Button";
-import LinkNav from "../LinkNav/LinkNav";
 
-const StyleSign = styled.div`
+const AuthStyle = styled.div`
   display: flex;
   align-items: center;
   justify-content: end;
-  height: 75px;
+  height: 100%;
   gap: 26px;
 `;
 
+const SingInStyle= styled.a`
+  background-color: transparent;
+  white-space: nowrap;
+  color: #fff;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  &:hover {
+    border-bottom: 1px solid white;
+  }
+`
+
 const Sign = () => {
   return (
-    <StyleSign>
-      <LinkNav href="/" text="Sign in"></LinkNav>
+    <AuthStyle>
+      <SingInStyle href="/">Sign in</SingInStyle>
       <Button
         backgroundColor="#FF4820"
         color="#fff"
@@ -25,7 +37,7 @@ const Sign = () => {
       >
         Sign Up
       </Button>
-    </StyleSign>
+    </AuthStyle>
   );
 };
 

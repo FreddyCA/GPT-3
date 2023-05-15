@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import LinkNav from "../LinkNav/LinkNav";
+import PropTypes from "prop-types";
 
 const MenuNavStyle = styled.div`
   flex: 1;
@@ -9,8 +10,8 @@ const MenuNavStyle = styled.div`
 
   @media screen and (max-width: 992px) {
     position: absolute;
-    top: 100px;
-    left: 0;
+    top: 80px;
+    left: ${({ showMenu }) => (showMenu ? "0" : "-100%")};
     width: 200px;
     flex-direction: column;
     align-items: center;
@@ -28,18 +29,42 @@ const linksMenu = [
   { link: "Library", href: "library" },
 ];
 
-const MenuNav = () => {
+const MenuNav = ({ showMenu, showMenuFunc, widthState }) => {
   return (
-    <MenuNavStyle>
-      {linksMenu.map((element) => (
+    <MenuNavStyle showMenu={showMenu}>
+      {linksMenu.map((element, index) => (
         <LinkNav
-          key={element.href}
+          showMenu={showMenu}
+          showMenuFunc={showMenuFunc}
+          key={index}
           text={element.link}
           href={element.href}
         ></LinkNav>
       ))}
+      {!widthState && (
+        <>
+          <LinkNav
+            showMenu={showMenu}
+            showMenuFunc={showMenuFunc}
+            text={"Sign in"}
+            href={"#"}
+          ></LinkNav>
+          <LinkNav
+            showMenu={showMenu}
+            showMenuFunc={showMenuFunc}
+            text={"Sign up"}
+            href={"#"}
+          ></LinkNav>
+        </>
+      )}
     </MenuNavStyle>
   );
+};
+
+MenuNav.propTypes = {
+  showMenu: PropTypes.bool.isRequired,
+  showMenuFunc: PropTypes.func.isRequired,
+  widthState: PropTypes.bool,
 };
 
 export default MenuNav;
